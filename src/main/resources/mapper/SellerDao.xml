@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 这里填写对应的Dao文件所在的路径 -->
+<mapper namespace="com.hustmcx.mall_seckill.dao.SellerDao">
+    <!--    void insertSeller(Seller seller);-->
+
+    <!--    void getSellerById(int id);-->
+
+    <!--    void updateSeller(Seller seller);-->
+
+    <!--    void deleteSellerById(int id);-->
+
+
+    <!--    List<Seller> querySellerByVo(SellerVo sellerVo);-->
+    <sql id="customSellerVoSql">
+        <if test="customSeller != null">
+            <if test="customSeller.name!=null and customSeller.name!=''">
+                and name = "${customSeller.name}"
+            </if>
+            <if test="customSeller.shopName!=null and customSeller.shopName!='' ">
+                and shopName = "${customSeller.shopName}"
+            </if>
+            <if test="customSeller.account!=null and customSeller.account!='' ">
+                and account = "${customSeller.account}"
+            </if>
+            <if test="customSeller.password!=null and customSeller.password!='' ">
+                and password = "${customSeller.password}"
+            </if>
+            <if test="customSeller.scope!=null and customSeller.scope!='' ">
+                and scope = "${customSeller.scope}"
+            </if>
+        </if>
+    </sql>
+    <select id="querySellerByVo" parameterType="com.hustmcx.mall_seckill.vo.seller.SellerVo"
+            resultType="com.hustmcx.mall_seckill.model.Seller">
+        select * from seller
+        <where>
+            <include refid="customSellerVoSql"></include>
+        </where>
+    </select>
+</mapper>

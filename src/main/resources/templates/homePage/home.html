@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Insert title here</title>
+</head>
+<body>
+<div th:align="center">
+    <a th:href="@{'/userRegisterLogin/toRegister'}">注册</a>
+    <a th:href="@{'/userRegisterLogin/toLogin'}">登陆</a></br>
+    <a th:href="@{'/userRegisterLogin/exit'}">退出登录</a>
+
+    <table th:border="3">
+        <tr>
+            <th>秒杀商品标题</th>
+            <th>商品图片地址</th>
+            <th>商品秒杀价格</th>
+            <th>秒杀商品原价</th>
+            <th>秒杀开始时间</th>
+            <th>秒杀结束时间</th>
+            <th>操作</th>
+        </tr>
+        <tr th:each="producrInfo : ${list}">
+            <td th:text="${producrInfo.productTitle} "></td>
+            <td th:text="${producrInfo.productPic} "></td>
+            <td th:text="${producrInfo.killPrice} "></td>
+            <td th:text="${producrInfo.originalPrice} "></td>
+            <td th:text="${producrInfo.startTime} "></td>
+            <td th:text="${producrInfo.endTime}"></td>
+            <td><a th:href="@{'/pageHome/viewProductDetail?productId='+${producrInfo.productId}}">查看</a></td>
+            <!--    </br>-->
+        </tr>
+    </table>
+</div>
+</body>
+</html>

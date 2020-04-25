@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Insert title here</title>
+</head>
+<body>
+<table th:border="3">
+    <tr>
+        <th>秒杀商品的id</th>
+        <th>秒杀商品标题</th>
+        <th>商品图片地址</th>
+        <th>商品秒杀价格</th>
+        <th>秒杀商品原价</th>
+        <th>商家id</th>
+        <th>申请秒杀时间</th>
+        <th>商品审核状态</th>
+        <th>秒杀开始时间</th>
+        <th>秒杀结束时间</th>
+        <th>秒杀商品数量</th>
+        <th>秒杀商品库存</th>
+        <th>秒杀商品描述</th>
+        <th>操作</th>
+    </tr>
+    <tr th:each="productInfo : ${list}">
+        <td th:text="${productInfo.productId}"></td>
+        <td th:text="${productInfo.productTitle}"></td>
+        <td th:text="${productInfo.productPic}"></td>
+        <td th:text="${productInfo.killPrice}"></td>
+        <td th:text="${productInfo.originalPrice}"></td>
+        <td th:text="${productInfo.sellerId}"></td>
+        <td th:text="${productInfo.applyTime}"></td>
+        <td th:text="${productInfo.auditState}"></td>
+        <td th:text="${productInfo.startTime}"></td>
+        <td th:text="${productInfo.endTime}"></td>
+        <td th:text="${productInfo.productCount}"></td>
+        <td th:text="${productInfo.storeCount}"></td>
+        <td th:text="${productInfo.description}"></td>
+        <td>
+            <a th:href="@{'toUpdateProduct?productId='+${productInfo.productId}}">修改</a>
+            ||
+            <a th:href="@{'deleteProductById?productId='+${productInfo.productId}}">删除</a>
+            ||
+            <a th:href="@{'queryProductByIid?productId='+${productInfo.productId}}">查看</a>
+            ||
+            <a th:href="@{'toUpdateProductState?productId='+${productInfo.productId}}">审核</a>
+            ||
+            <a th:href="@{'/productDetail/toInsertProductDetail?productId='+${productInfo.productId}+'&sellerId='+${productInfo.sellerId}}">添加商品详情</a>
+            ||
+            <a th:href="@{'/productDetail/queryProductDetailByProductId?productId='+${productInfo.productId}}">查看商品详情</a>
+            ||
+            <a th:href="@{'/productDetail/toUpdateProductDetail?productId='+${productInfo.productId}}">修改商品详情</a>
+        </td>
+    </tr>
+</table>
+<div th:align="center">
+    <a th:href="@{'toApplySkProduct'}">申请秒杀商品</a>
+</div>
+</body>
+</html>

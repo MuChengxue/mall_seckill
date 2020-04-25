@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!--<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Insert title here</title>
+</head>
+<body>
+<form action="view">
+    商品产地：<span th:text="${productDetail.productPlace}"></span></br>
+    商品名称：<span th:text="${productDetail.productName}"></span></br>
+    商品品牌：<span th:text="${productDetail.brandName}"></span></br>
+    商品重量：<span th:text="${productDetail.productWeight}"></span></br>
+    商品规格：<span th:text="${productDetail.specification}"></span></br>
+    详情图片：<span th:text="${productDetail.detailPic}"></span></br>
+</form>
+</body>
+<script type="text/javascript">
+    function submit(obj) {
+        obj.parent.sumbit();
+    }
+</script>
+</html>

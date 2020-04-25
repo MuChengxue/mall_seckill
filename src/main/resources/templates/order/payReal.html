@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Insert title here</title>
+</head>
+<body>
+<form action="payWithOrder" th:method="post"><!--action跳转地址-->
+    支付方式：
+    支付宝<input name="payType" th:value="1" type="radio"/>
+    微信<input name="payType" th:value="2" type="radio"/>
+    银联<input name="payType" th:value="3" type="radio"/></br>
+    支付金额：<span th:text="${payAmount}"></span></br>
+    流水号：<span th:text="${transactionSerial}"></span></br>
+    <input name="id" th:value="${id}" type="hidden"/>
+    <input name="payAmount" th:value="${payAmount}" type="hidden"/>
+    <input name="transactionSerial" th:value="${transactionSerial}" type="hidden"/>
+    <input type="button" value="立即付款" onclick="submit(this)">
+</form>
+</body>
+<script type="text/javascript">
+    function submit(obj) {
+        obj.parent.submit();
+    }
+</script>
+</html>

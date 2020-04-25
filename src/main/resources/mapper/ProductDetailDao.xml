@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 这里填写对应的Dao文件所在的路径 -->
+<mapper namespace="com.hustmcx.mall_seckill.dao.ProductDetailDao">
+    <!--    void insertProductDetail(ProductDetail productDetail);-->
+
+    <!--    ProductDetail queryProductDetailByProductId(int productId);-->
+
+    <!--    void updateProductDetail(ProductDetail productDetail);-->
+
+</mapper>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Insert title here</title>
+</head>
+<body>
+
+<form action="login" th:method="post"><!--action跳转地址-->
+    用户账号：<input name="userAccount"></br>
+    用户密码：<input name="userPassword"></br>
+    <input type="button" value="提交" onclick="submit(this)">
+</form>
+</body>
+<script type="text/javascript">
+    function submit(obj) {
+        obj.parent.submit();
+    }
+</script>
+</html>

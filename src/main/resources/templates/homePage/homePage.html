@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Insert title here</title>
+</head>
+<body>
+<div th:align="center">
+    欢迎用户：<span th:text="${user.userAccount}"></span></br>
+    <a th:href="@{'/userRegisterLogin/toRegister'}">注册</a>
+    <a th:href="@{'/userRegisterLogin/toLogin'}">登陆</a></br>
+    <a th:href="@{'/userRegisterLogin/exit'}">退出登录</a>
+    <a th:href="@{'/order/queryOrderByUserId'}">订单查询</a>
+
+</div>
+</body>
+</html>

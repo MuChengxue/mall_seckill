@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Insert title here</title>
+</head>
+<body>
+<form action="payOrder"><!--action跳转地址-->
+    商品名称：<span th:text="${productInfo.productTitle}"></span></br>
+    购买数量：<span th:text="${orderAmount}"></span></br>
+    支付总额：<span th:text="${payAmount}"></span></br>
+    <input name="productId" th:value="${productInfo.productId}" type="hidden"/>
+    <input name="userId" th:value="${userId}" type="hidden"/>
+    <input name="sellerId" th:value="${productInfo.sellerId}" type="hidden"/>
+    <input name="payAmount" th:value="${payAmount}" type="hidden"/>
+    <input name="orderAmount" th:value="${orderAmount}" type="hidden"/>
+    收货人地址：<input th:type="text" name="receiveAddress"></br>
+    收货人电话：<input th:type="text" name="receivePhone"></br>
+    收货人姓名：<input th:type="text" name="receiveName"></br>
+    <input type="button" value="立即付款" onclick="submit(this)">
+</form>
+</body>
+<script type="text/javascript">
+    function submit(obj) {
+        obj.parent.submit();
+    }
+</script>
+</html>

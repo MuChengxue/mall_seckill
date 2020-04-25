@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 这里填写对应的Dao文件所在的路径 -->
+<mapper namespace="com.hustmcx.mall_seckill.dao.UserDao">
+    <!--    void insertUser(User user);-->
+
+    <!--    User queryUserById(int id);-->
+
+    <!--    void updateUser(User user);-->
+
+    <!--    void deleteUserById(int id);-->
+
+    <!--    List<User> queryUserByVo(UserVo userVo);-->
+    <sql id="customUserVoSql">
+        <if test="customUser != null">
+            <if test="customUser.userName!=null and customUser.userName!=''">
+                and name = "${customUser.userName}"
+            </if>
+            <if test="customUser.userAccount!=null and customUser.userAccount!='' ">
+                and user_account = "${customUser.userAccount}"
+            </if>
+            <if test="customUser.userPassword!=null and customUser.userPassword!='' ">
+                and user_password = "${customUser.userPassword}"
+            </if>
+            <if test="customUser.userSex!=null and customUser.userSex!='' ">
+                and user_sex = "${customUser.userSex}"
+            </if>
+            <if test="customUser.userAge!=null and customUser.userAge!='' ">
+                and user_age = "${customUser.userAge}"
+            </if>
+            <if test="customUser.userAddress!=null and customUser.userAddress!='' ">
+                and user_address = "${customUser.userAddress}"
+            </if>
+            <if test="customUser.userEmail!=null and customUser.userEmail!='' ">
+                and user_email = "${customUser.userEmail}"
+            </if>
+        </if>
+    </sql>
+    <select id="queryUserByVo" parameterType="com.hustmcx.mall_seckill.vo.user.UserVo"
+            resultType="com.hustmcx.mall_seckill.model.User">
+        select * from user
+        <where>
+            <include refid="customUserVoSql"></include>
+        </where>
+    </select>
+</mapper>

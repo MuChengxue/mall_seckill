@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Insert title here</title>
+</head>
+<body>
+<center>
+    <a th:href="@{'/seller/toAdd'}">添加商家</a>
+    <table th:border="3">
+        <tr>
+            <th>支付金额</th>
+            <th>订单生成时间</th>
+            <th>支付状态</th>
+            <th>收货地址</th>
+            <th>收货电话</th>
+            <th>收货姓名</th>
+            <th>交易流水</th>
+            <th>购买数量</th>
+            <th>操作</th>
+        </tr>
+        <tr th:each="order : ${list}">
+            <td th:text="${order.payAmount}"></td>
+            <td th:text="${order.createTime}"></td>
+            <td th:text="${order.payStatus}"></td>
+            <td th:text="${order.receiveAddress}"></td>
+            <td th:text="${order.receivePhone}"></td>
+            <td th:text="${order.receiveName}"></td>
+            <td th:text="${order.transactionSerial}"></td>
+            <td th:text="${order.orderAmount}"></td>
+            <td>
+                <div th:if="${order.payStatus==1}">
+                    <a th:href="@{'toPayWithOrder?id='+${order.id}+'&transactionSerial='+${order.transactionSerial}+'&payAmount='+${order.payAmount}}">继续支付</a>
+                </div>
+                <div th:if="${order.payStatus==2}">支付完成
+                    <input type="button" value="发起退款"
+                           th:onclick="'javascript:applyRefund('+${order.id}+','+${order.payType}+');'">
+                </div>
+                <div th:if="${order.payStatus==3}">退款成功</div>
+                <div th:if="${order.payStatus==4}">退款申请中</div>
+                <div th:if="${order.payStatus==5}">退款申请失败</div>
+            </td>
+        </tr>
+    </table>
+</center>
+
+
+</body>
+<script type="text/javascript">
+    function applyRefund(orderId, payType) {
+        window.location.href = "applyRefund?orderId=" + orderId + "&payType=" + payType;
+    }
+</script>
+</html>

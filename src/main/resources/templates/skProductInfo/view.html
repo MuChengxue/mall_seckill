@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Insert title here</title>
+</head>
+<body>
+<!--<div th:align="center">-->
+<form action="view">
+    秒杀商品的id：<span th:text="${productInfo.productId}"></span></br>
+    秒杀商品标题：<span th:text="${productInfo.productTitle}"></span></br>
+    商品图片地址：<span th:text="${productInfo.productPic}"></span></br>
+    商品秒杀价格：<span th:text="${productInfo.killPrice}"></span></br>
+    秒杀商品原价：<span th:text="${productInfo.originalPrice}"></span></br>
+    商家id：<span th:text="${productInfo.sellerId}"></span></br>
+    申请秒杀时间：<span th:text="${productInfo.applyTime}"></span></br>
+    商品审核时间：<span th:text="${productInfo.auditTime}"></span></br>
+    商品审核状态：<span th:text="${productInfo.auditState}"></span></br>
+    秒杀开始时间：<span th:text="${productInfo.startTime}"></span></br>
+    秒杀结束时间：<span th:text="${productInfo.endTime}"></span></br>
+    秒杀商品数量：<span th:text="${productInfo.productCount}"></span></br>
+    秒杀商品库存：<span th:text="${productInfo.storeCount}"></span></br>
+    秒杀商品描述：<span th:text="${productInfo.description}"></span></br>
+</form>
+<!--</div>-->
+
+
+</body>
+</html>

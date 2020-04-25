@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 这里填写对应的Dao文件所在的路径 -->
+<mapper namespace="com.hustmcx.mall_seckill.dao.ProductInfoDao">
+    <!--    void addSkProduct(ProductInfo productInfo);-->
+
+    <!--    List<ProductInfo> listProduct(ProductInfo productInfo);-->
+
+    <!--    ProductInfo queryProductByIid(int id);-->
+
+    <!--    void deleteProductById(int id);-->
+
+    <!--    void updateProduct(ProductInfo productInfo);-->
+
+    <!--    void updateProductState(ProductInfoVo productInfoVo);    -->
+    <sql id="customProductInfoVoSql">
+        <if test="customProduct != null">
+            <if test="customProduct.productId!=null and customProduct.productId!=''">
+                and product_id = "${customProduct.productId}"
+            </if>
+            <if test="customProduct.productTitle!=null and customProduct.productTitle!='' ">
+                and product_title like "%${customProduct.productTitle}%"
+            </if>
+            <if test="customProduct.startSkPrice!=null and customProduct.startSkPrice!='' ">
+                and kill_price <![CDATA[ >= ]]> "${customProduct.startSkPrice}"
+            </if>
+            <if test="customProduct.endSkPrice!=null and customProduct.endSkPrice!='' ">
+                and kill_price <![CDATA[ <= ]]> "${customProduct.endSkPrice}"
+            </if>
+            <if test="customProduct.startOriginalPrice!=null and customProduct.startOriginalPrice!='' ">
+                and original_price <![CDATA[ >= ]]> "${customProduct.startOriginalPrice}"
+            </if>
+            <if test="customProduct.endOriginalPrice!=null and customProduct.endOriginalPrice!='' ">
+                and original_price <![CDATA[ <= ]]> "${customProduct.endOriginalPrice}"
+            </if>
+            <if test="customProduct.description!=null and customProduct.description!=''">
+                and description like "%${customProduct.description}%"
+            </if>
+            <if test="customProduct.endApplyDate!=null and customProduct.endApplyDate!='' ">
+                and apply_time <![CDATA[ <= ]]> STR_TO_DATE(#{customProduct.endApplyDate},'%Y-%m-%d %H:%i:%S')
+            </if>
+            <if test="customProduct.startApplyDate!=null and customProduct.startApplyDate!='' ">
+                and apply_time <![CDATA[ >= ]]> STR_TO_DATE(#{customProduct.startApplyDate},'%Y-%m-%d %H:%i:%S')
+            </if>
+            <if test="customProduct.endAuditDate!=null and customProduct.endAuditDate!='' ">
+                and audit_time <![CDATA[ <= ]]> STR_TO_DATE(#{customProduct.endAuditDate},'%Y-%m-%d %H:%i:%S')
+            </if>
+            <if test="customProduct.startAuditDate!=null and customProduct.startAuditDate!='' ">
+                and audit_time <![CDATA[ >= ]]> STR_TO_DATE(#{customProduct.startAuditDate},'%Y-%m-%d %H:%i:%S')
+            </if>
+            <if test="customProduct.auditState!=null and customProduct.auditState!='' ">
+                and audit_state = "${customProduct.auditState}"
+            </if>
+            <if test="customProduct.startStartTime!=null and customProduct.startStartTime!='' ">
+                and start_time <![CDATA[ >= ]]> STR_TO_DATE(#{customProduct.startStartTime},'%Y-%m-%d %H:%i:%S')
+            </if>
+            <if test="customProduct.endStartTime!=null and customProduct.endStartTime!='' ">
+                and start_time <![CDATA[ <= ]]> STR_TO_DATE(#{customProduct.endStartTime},'%Y-%m-%d %H:%i:%S')
+            </if>
+            <if test="customProduct.startEndTime!=null and customProduct.startEndTime!='' ">
+                and end_time <![CDATA[ >= ]]> STR_TO_DATE(#{customProduct.startEndTime},'%Y-%m-%d %H:%i:%S')
+            </if>
+            <if test="customProduct.endEndTime!=null and customProduct.endEndTime!='' ">
+                and end_time <![CDATA[ <= ]]> STR_TO_DATE(#{customProduct.endEndTime},'%Y-%m-%d %H:%i:%S')
+            </if>
+            <if test="customProduct.startProductCount!=null and customProduct.startProductCount!='' ">
+                and product_count <![CDATA[ >= ]]> "${customProduct.startProductCount}"
+            </if>
+            <if test="customProduct.endProductCount!=null and customProduct.endProductCount!='' ">
+                and product_count <![CDATA[ <= ]]> "${customProduct.endProductCount}"
+            </if>
+            <if test="customProduct.startStockCount!=null and customProduct.startStockCount!='' ">
+                and store_count <![CDATA[ >= ]]> "${customProduct.startStockCount}"
+            </if>
+            <if test="customProduct.endStockCount!=null and customProduct.endStockCount!='' ">
+                and store_count <![CDATA[ <= ]]> "${customProduct.endStockCount}"
+            </if>
+        </if>
+    </sql>
+    <select id="listProduct" parameterType="com.hustmcx.mall_seckill.vo.productInfo.ProductInfoVo"
+            resultType="com.hustmcx.mall_seckill.model.ProductInfo">
+        select * from product_info
+        <where>
+            <include refid="customProductInfoVoSql"></include>
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<!--<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Insert title here</title>
+</head>
+<body>
+<form action="view">
+    商家姓名：<span th:text="${seller.name}"></span></br>
+    店铺名称：<span th:text="${seller.shopName}"></span></br>
+    商家账号：<span th:text="${seller.account}"></span></br>
+    商家密码：<span th:text="${seller.password}"></span></br>
+    经营范围：<span th:text="${seller.scope}"></span></br>
+</form>
+</body>
+</html>

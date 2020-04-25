@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<!--<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Insert title here</title>
+</head>
+<body>
+<form action="view">
+    用户姓名：<span th:text="${user.userName}"></span></br>
+    用户账号：<span th:text="${user.userAccount}"></span></br>
+    用户密码：<span th:text="${user.userPassword}"></span></br>
+    用户性别：<span th:text="${user.userSex}"></span></br>
+    用户年龄：<span th:text="${user.userAge}"></span></br>
+    用户地址：<span th:text="${user.userAddress}"></span></br>
+    用户邮箱：<span th:text="${user.userEmail}"></span></br>
+</form>
+</body>
+</html>

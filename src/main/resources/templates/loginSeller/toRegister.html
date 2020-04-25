@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Insert title here</title>
+</head>
+<body>
+<form action="register" th:method="post"><!--action跳转地址-->
+    商家姓名：<input name="name"></br>
+    店铺名称：<input name="shopName"></br>
+    商家账号：<input name="account"></br>
+    商家密码：<input name="password"></br>
+    经营范围：<input name="scope"></br>
+    <input type="button" value="提交" onclick="submit(this)">
+</form>
+</body>
+<script type="text/javascript">
+    function submit(obj) {
+        obj.parent.submit();
+    }
+</script>
+</html>

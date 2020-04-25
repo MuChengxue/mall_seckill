@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Insert title here</title>
+</head>
+<body>
+<form action="/order/toPayOrder"><!--action跳转地址-->
+    购买数量：<input name="orderAmount"></br>
+    <input name="productId" th:value="${productInfo.productId}" type="hidden"/>
+
+    <table th:border="2">
+        <tr>
+            <th>商品标题</th>
+            <th>商品图片</th>
+            <th>秒杀价格</th>
+            <th>商品原价</th>
+            <th>秒杀开始时间</th>
+            <th>秒杀结束时间</th>
+            <th>秒杀商品数</th>
+            <th>库存</th>
+        </tr>
+        <tr>
+            <td th:text="${productInfo.productTitle}"></td>
+            <td th:text="${productInfo.productPic}"></td>
+            <td th:text="${productInfo.killPrice}"></td>
+            <td th:text="${productInfo.originalPrice}"></td>
+            <td th:text="${productInfo.startTime}"></td>
+            <td th:text="${productInfo.endTime}"></td>
+            <td th:text="${productInfo.productCount}"></td>
+            <td th:text="${productInfo.storeCount}"></td>
+        </tr>
+    </table>
+
+    <table th:border="1">
+        <tr>
+            <th>商品产地</th>
+            <th>商品名称</th>
+            <th>商品品牌</th>
+            <th>商品重量</th>
+            <th>商品规格</th>
+            <th>详情图片</th>
+        </tr>
+        <tr>
+            <td th:text="${productDetail.productPlace}"></td>
+            <td th:text="${productDetail.productName}"></td>
+            <td th:text="${productDetail.brandName}"></td>
+            <td th:text="${productDetail.productWeight}"></td>
+            <td th:text="${productDetail.specification}"></td>
+            <td th:text="${productDetail.detailPic}"></td>
+        </tr>
+    </table>
+    <input type="button" value="立即购买" onclick="submit(this)">
+</form>
+</body>
+<script type="text/javascript">
+    function submit(obj) {
+        obj.parent.submit();
+    }
+</script>
+</html>
